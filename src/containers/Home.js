@@ -1,5 +1,5 @@
 import Logo from '../components/Logo';
-import Salute from '../components/Salute/Salute';
+import Salute from '../components/Salute';
 import React from 'react';
 // import Productos from "../components/NavBar/Productos";
 import Acerca from "../components/NavBar/Acerca";

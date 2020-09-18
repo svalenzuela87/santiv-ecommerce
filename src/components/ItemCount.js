@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../App.css';
+import addProduct from "../components/CartIcon";
 
 // import Cart from '../containers/Cart';
 
@@ -21,8 +22,14 @@ const Counter = ({initial, max, min}) => {
         'place-content': 'space-between',
         'width': '90px',
         'align-items': 'center',
-        'margin-left': '12px'
+        // 'margin-left': '12px'
     };
+
+    const styleCompra = {
+        'flex-direction': 'column',
+        'display': 'flex',
+        'align-items': 'center',
+    }
 
     //Modificamos las props (objetos en este caso) inicializamos
     const [count, setCount] = useState(initial);
@@ -44,7 +51,7 @@ const Counter = ({initial, max, min}) => {
     return (
         <>
 
-        {/* <div> */}
+         <div style={styleCompra}>
             {/* Agregamos condiciones para deshabilitar los botones */}
             <div style={styleButtons}>
             <button disabled = {count === min} onClick ={subs}> - </button>            
@@ -63,7 +70,7 @@ const Counter = ({initial, max, min}) => {
             </h5> */}
 
             {/* <h5> El minimo de compra es {min} y el maximo de compra es {max}</h5> */}
-        {/* </div> */}
+        
 
             <br/>
             
@@ -74,6 +81,9 @@ const Counter = ({initial, max, min}) => {
                     } 
             </label>
 
+            <button  onClick={() => addProduct()}type="button" class="btn btn-info">Agregar al carrito {count}</button>
+
+        </div> 
                     
         </>
     )

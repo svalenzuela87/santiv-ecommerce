@@ -1,19 +1,9 @@
 import React from 'react';
-import CartIcon from '../../components/NavBar/CartIcon';
-import '../../assets/style.css';
-import {Link} from 'react-router-dom';
+import CartIcon from '../components/NavBar/CartIcon';
+import '../assets/style.css';
+import { Navbar,Nav,NavDropdown } from 'react-bootstrap'
+import Categorias from '../components/NavBar/Categorias';
 
-import {
-    BrowserRouter as Router,
-  } from "react-router-dom";
-  
-  import { Navbar,Nav,NavDropdown } from 'react-bootstrap'
-
-
-  function Categories({categories}){
-    console.log ("Las categorias son : " + categories);
-    return 
-  }
 
 
 function NavBar () {
@@ -42,25 +32,26 @@ function NavBar () {
                                     <li class="nav-item">
                                         <a class="nav-link" href="#contacto">Contacto</a>
                                     </li>
-                                        {/* <li class="nav-item dropdown bg-dark">
+                                        <li class="nav-item dropdown bg-dark">
                                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Categorias
                                             </a>
                                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                <a class="dropdown-item" href="category/:id">Frutos</a>
+                                                <Categorias/>
+                                                {/* <a class="dropdown-item" href="category/:id">Frutos</a>
                                                 <a class="dropdown-item" href="category/:id">Semillas</a>
                                                 <a class="dropdown-item" href="category/:id">Suplementos</a>
                                             <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item"href="category/:id">Importados</a>
+                                                <a class="dropdown-item"href="category/:id">Importados</a> */}
                                             </div>
-                                        </li> */}
-                                    <NavDropdown title="Categorias" id="basic-nav-dropdown">
+                                        </li>
+                                    {/* <NavDropdown title="Categorias" id="basic-nav-dropdown">
                                         <NavDropdown.Item href="category/:id">Frutos</NavDropdown.Item>
                                         <NavDropdown.Item href="category/:id">Semillas</NavDropdown.Item>
                                         <NavDropdown.Item href="category/:id">Suplementos</NavDropdown.Item>
                                         <NavDropdown.Divider />
                                         <NavDropdown.Item href="category/:id">Importados</NavDropdown.Item>
-                                    </NavDropdown>
+                                    </NavDropdown> */}
                                 </ul>
                                 {/* <form class="form-inline my-2 my-lg-0">
                                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
