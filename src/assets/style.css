@@ -109,3 +109,21 @@ h2:after{
 .navbar-nav > li > .dropdown-menu {     background-color: #343a40;  }
 .navbar-nav > li > .dropdown-menu a{   color: rgba(255,255,255,.5);  }
 .navbar-nav > li > .dropdown-menu a:hover { background-color: #343a40!important;}
+
+
+#styleCenter{
+  margin-Top: 70px;
+  display: flex;
+  flex-Direction: column;
+  align-Items: center
+}
+
+#styleVolver{
+  margin-Top: 10px;
+}
+
+#styleImage{
+  width: 200px;
+  height: 200px;
+  margin-Bottom: 5px
+}

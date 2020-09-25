@@ -1,5 +1,6 @@
 import React from 'react';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import '../assets/style.css';
 
 const count = 0;
 

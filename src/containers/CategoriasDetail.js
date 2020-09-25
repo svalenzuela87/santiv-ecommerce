@@ -1,16 +1,6 @@
 import React from 'react';
 import {Link,useParams} from "react-router-dom";
-
-const style = {
-    marginTop: '70px',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center'
-}
-
-const styleVolver = {
-    marginTop: '10px',
-}
+import '../assets/style.css';
 
 
 function CategoriasDetail (){
@@ -18,9 +8,9 @@ function CategoriasDetail (){
 
     return <>
 
-        <p style={style}>Esto es un quilombo y estas en : {categoryId}</p>
+        <p id='styleCenter'>Esto es un quilombo y estas en : {categoryId}</p>
 
-        <Link to={'/'}><button style={styleVolver} type="button" class="btn btn-info">Volver</button></Link> 
+        <Link to={'/'}><button id='styleVolver' type="button" class="btn btn-info">Volver</button></Link> 
     </>
 }
 

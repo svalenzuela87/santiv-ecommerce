@@ -1,25 +1,10 @@
 import React, {useEffect,useState} from 'react';
 import Counter from "../components/ItemCount";
 import {Link, useParams} from "react-router-dom";
+import '../assets/style.css';
 
 
 
-const style = {
-    marginTop: '70px',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center'
-}
-
-const styleVolver = {
-    marginTop: '10px',
-}
-
-const styleImage = {
-    width: '200px',
-    height: '200px',
-    marginBottom: '5px'
-}
 
 let location ="/assets/productos/";
 
@@ -65,19 +50,23 @@ function ItemDetail () {
 
     return <>
 
-            { cargando && <div style={style}><p>Cargando informacion del producto...</p></div>} 
+            { cargando && <div id='styleCenter'><p>Cargando informacion del producto...</p></div>} 
 
-            { !cargando &&  <div style={style}>
+            { !cargando &&  <div id='styleCenter'>
                         <p>El producto seleccionado es : {item.name}</p>
                         {item && <p>{item.description}</p>}
-                        {item && <img src={location+item.image} alt={item.name} style={styleImage}/>}
+                        {item && <img src={location+item.image} alt={item.name} id='styleImage'/>}
                             < Counter
                                     initial ={1}
                                     max= {item.stock}
                                     min = {0}
                                 />
 
-                  <Link to={'/'}><button style={styleVolver} type="button" class="btn btn-info">Volver</button></Link> 
+                  <Link to={'/'}><button id='styleVolver' type="button" class="btn btn-info">Volver</button></Link> 
+                    
+                    <br/>
+
+                  <Link to={'/Cart/'+ id}><button type="button" class="btn btn-info">Agregar al carrito</button></Link>
 
                   </div>
 

@@ -6,7 +6,6 @@ import Acerca from "../components/NavBar/Acerca";
 import Contacto from "../components/NavBar/Contacto";
 import ProductList from "../components/NavBar/Productos";
 import {Link} from 'react-router-dom';
-import Cart from '../containers/Cart';
 
 import '../assets/style.css';
 
@@ -17,9 +16,7 @@ function Home({ children }) {
   <div id="flex">  
 
         <div id="logo">
-            <Logo>
-                <Link to={'/Cart'}></Link>
-            </Logo>
+           <Link to={'/Cart'}><Logo/></Link>
         </div>
 
         <div id="salute">
@@ -53,11 +50,6 @@ function Home({ children }) {
         <div id="contacto">
             <Contacto/>
         </div>
-
-        <div id='cart'>
-            <Cart/>
-        </div>
-
 
     </div>
 

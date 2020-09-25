@@ -31,8 +31,8 @@ function App() {
             <Route path="/categoria/:categoryId">
              <CategoriasDetail/>
             </Route>
-            <Route path ='/Cart'>
-            <Cart/>
+            <Route path ='/Cart/:productId'>
+              <Cart/>
             </Route>
           </Switch>
          </BrowserRouter> 

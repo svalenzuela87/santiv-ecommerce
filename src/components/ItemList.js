@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from  'react';
 import {Link} from 'react-router-dom';
 import {getFirestore} from '../firebase/index';
-
+import '../assets/style.css';
 
 const styleImage = {
     width: '200px',
@@ -20,6 +20,8 @@ const styleButton = {
     marginTop: '80px'
 }
 
+//HACERLO CON EL "Lista cuadriculada con barras de título"
+// https://material-ui.com/es/components/grid-list/
 
 export function ProductList({ items }) {
     let location ="/assets/productos/";
