@@ -15,12 +15,12 @@ const style2 = {
 
 function CartIcon(){
  return <>
-    <div>
+    {/* <div>
             {count > 0 
                         ? <button style={style2} onClick={addProduct}><p>{count}</p><AddShoppingCartIcon/></button> 
                         : <button style={style} onClick={addProduct}><AddShoppingCartIcon/></button> 
                         } 
-    </div>
+    </div> */}
  </>
 }
 

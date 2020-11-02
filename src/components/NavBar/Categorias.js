@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {getFirestore} from '../../firebase/index';
 import {Link} from 'react-router-dom';
+import { NavDropdown } from 'react-bootstrap'
 
 //DEFAULT
 const categoriesDefault = ['Frutos', 'Semillas','Suplementos','Importados'];
@@ -48,7 +49,7 @@ function Categorias(){
       return <>
           {categories.map( categoria =>  <Link to={'/categoria/' + categoria}><a class="dropdown-item">{categoria}</a></Link>  )}   
       </>
-
+    // <NavDropdown.Item >{categoria}</NavDropdown.Item>
   }
 
 export default Categorias;

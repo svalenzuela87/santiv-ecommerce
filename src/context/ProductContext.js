@@ -2,7 +2,7 @@ import React, {useState,useContext,useEffect} from 'react';
 
 export const ListContext = React.createContext();
 
-export const useCartContext = () => useContext(ListContext);
+export const useProductContext = () => useContext(ListContext);
 
 export function ListProvider({value,children}) {
   const [list, setList] = useState(value || []);

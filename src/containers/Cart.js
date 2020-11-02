@@ -5,6 +5,12 @@ import {getFirestore} from "../firebase/index";
 import {Link,useParams} from "react-router-dom";
 import '../assets/style.css';
 import { useCartContext, ListProvider } from '../context/CartContext';
+// import Contador from '../components/NavBar/CartIcon';
+
+const buttonRemove = {  
+  height: '47px',
+  marginTop: '64px',
+};
 
 
 //Creando una orden de compra y agregandola a Firesore
@@ -82,64 +88,146 @@ const obtenerItem= (id)=> new Promise((res, rej) =>{
 
 
 function ListItems({id}){
-	const {addItem,list,removeItem,cargando} = useCartContext();
-	const [item, setItem] = useState([]);
-
-
+	const {addItem,list,removeItem,cargando,noItems,count,getList,noId} = useCartContext();
 
 		useEffect(() => {
 			console.log('Mounted Cart');
-			obtenerItem(id).then(res => {
-				setItem(res);
-				addItem(res);
-			}).catch((error) => {
-				console.log("Error buscando item ", error);
-			}).finally(() => {
-				
-			  });
-	
-			return ()=> {
-				console.log ('Dismounted Cart');
-			}
+			if (id !== "lista"){
+				obtenerItem(id).then(res => {
+					addItem(res);
+				}).catch((error) => {
+					console.log("Error buscando item ", error);
+				}).finally(() => {
+				});
+		
+				return ()=> {
+					console.log ('Dismounted Cart');
+				}
+			}else{
+				console.log("Obteniendo lista del carrito sin id");
+				getList();
+			}	
 		},[]);
 
-
+		//Por si cambia el id del Params apuntando al iconCart
+		useEffect(() => {
+			if (id === "lista")
+				getList();		
+		},[id]);
+		
 
 	return <>
 
-			{ cargando && <div id='styleCenter'>
+				{ cargando  ? <div id='styleCenter'>
 									<p>Obteniendo carrito...</p>
 									<br/>
 									<br/>
 									<Link to={'/item/' + id + '/detail'}><button id='styleVolver' type="button" class="btn btn-info">Volver</button></Link>	
-							</div>	
+							</div>	: null
 				} 
+			
 
-				<br/>
-				<br/>
-
-				{ !cargando &&  
-					<div>
-							<button onClick={() => removeItem(item)}>Remove Item</button>						
-							<ul>{list.map(i => <li>{i.name}</li>)}</ul>
+			{/* ////////////CON ID PARA VOLVER AL PRODUCTO ///////////////// */}
+			{ !noItems && !cargando && !noId ? <div>
+						<div id='styleCenter'> No Hay Items Para mostrar</div>
 						<br/>
+						<br/> 
+						<Link to={'/Productos/'}><button id='styleVolver' type="button" class="btn btn-info">Ver mas productos</button></Link>
 						<br/>
-						<button type="button" class="btn btn-info" onClick={() => createOrder({item})}> Crear orden de compra</button>	
-						<br/>
-						<Link to={'/item/' + id + '/detail'}><button id='styleVolver' type="button" class="btn btn-info">Volver</button></Link>	
-					</div>
+						<Link to={'/item/' + id + '/detail'}><button id='styleVolver' type="button" class="btn btn-info">Volver</button></Link>
+						</div>		: null
 				}
+
+
+				{ !cargando  && noItems && !noId ?  
+					<div>
+						        {list.map(p =>  
+								<div class="producto" id={p.id} > 
+								<p style={ {margin: '75px 20px 0px 20px'}}>{p.name}</p>
+								<p style={ {margin: '75px 20px 0px 20px'}}>Cantidad: {p.qty}</p>
+								   <button style={buttonRemove} onClick={() => removeItem(p.name)}>Remove Item</button>	
+								</div>                
+								)} 
+						<div>
+							<br/>
+							<br/>
+							<button type="button" class="btn btn-info" onClick={() => createOrder({list})}> Crear orden de compra</button>	
+						</div>
+						<br/>
+								<p>El total es de: {count}</p>	
+						<br/>
+						<Link to={'/Productos/lista'}><button id='styleVolver' type="button" class="btn btn-info">Ver mas productos</button></Link>
+						<br/>
+						<Link to={'/item/' + id + '/detail'}><button id='styleVolver' type="button" class="btn btn-info">Volver</button></Link>
+					</div>
+						: null
+				}
+
+				{/* ////////////SIN ID PARA VOLVER AL PRODUCTO ///////////////// */}
+
+				{ !noItems && !cargando && noId ? <div>
+						<div id='styleCenter'> No Hay Items Para mostrar</div>
+						<br/>
+						<br/> 
+						<Link to={'/Productos/'}><button id='styleVolver' type="button" class="btn btn-info">Ver mas productos</button></Link>
+						<br/>
+						<Link to={'/'}><button id='styleVolver' type="button" class="btn btn-info">Volver</button></Link>
+						</div>		: null
+				}
+
+
+				{ !cargando  && noItems && noId ?  
+					<div>
+						        {list.map(p =>  
+								<div class="producto" id={p.id} > 
+								<p style={ {margin: '75px 20px 0px 20px'}}>{p.name}</p>
+								<p style={ {margin: '75px 20px 0px 20px'}}>Cantidad: {p.qty}</p>
+								   <button style={buttonRemove} onClick={() => removeItem(p.name)}>Remove Item</button>	
+								</div>                
+								)} 
+						<div>
+							<br/>
+							<br/>
+							<button type="button" class="btn btn-info" onClick={() => createOrder({list})}> Crear orden de compra</button>	
+						</div>
+						<br/>
+								<p>El total es de: {count}</p>	
+						<br/>
+						<Link to={'/Productos/'}><button id='styleVolver' type="button" class="btn btn-info">Ver mas productos</button></Link>
+						<br/>
+						<Link to={'/'}><button id='styleVolver' type="button" class="btn btn-info">Volver</button></Link>
+					</div>
+						: null
+				}
+
+
 	</>
+		
 }
 
 function Cart(){
 	const {productId} = useParams();
 
+		//Primero verifico si hay items en el carrito seteados previamente
+		var verify = localStorage.getItem("cartItems");
+    
+		if(verify === null){
+			console.log("No existe ningun Cart")
+			// var value = "noCart";
+			var value = [];
+		}else{
+			let cartItems = [];
+			cartItems.push(localStorage.getItem("cartItems"));
+			var value= JSON.parse(cartItems);
+		}
+
+
 			return <>
-				<ListProvider>
+				<ListProvider value= {value}>
 					<ListItems id={productId}/>
 				</ListProvider>
 			</>
+		// }
 }
 
 export default Cart;

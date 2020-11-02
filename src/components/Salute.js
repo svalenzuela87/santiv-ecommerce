@@ -14,7 +14,7 @@ const Line = ({children}) => {
     const style = {
         display :'flex',
         margin : 35,
-        justifyContent: 'space between'
+        justifyContent: 'space between',
     }
     
 

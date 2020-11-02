@@ -2,6 +2,7 @@ import React, { useEffect, useState } from  'react';
 import {Link} from 'react-router-dom';
 import {getFirestore} from '../firebase/index';
 import '../assets/style.css';
+import ProductList from "../containers/ProductGallery";
 
 const styleImage = {
     width: '200px',
@@ -23,25 +24,25 @@ const styleButton = {
 //HACERLO CON EL "Lista cuadriculada con barras de título"
 // https://material-ui.com/es/components/grid-list/
 
-export function ProductList({ items }) {
-    let location ="/assets/productos/";
+// export function ProductList({ items }) {
+//     let location ="/assets/productos/";
     
-    // useEffect(() => {  
-    //   var lista= items;
-    //   console.log("aca recorro la lista que obtengo: " + JSON.stringify(lista));   
-    // },[]);
+//     // useEffect(() => {  
+//     //   var lista= items;
+//     //   console.log("aca recorro la lista que obtengo: " + JSON.stringify(lista));   
+//     // },[]);
 
-    return <> 
-    <div>
-        {items.map(p =>  
-                <div class="producto" id={p.id} > <img src={location+p.image} alt={p.name} style={styleImage}/> 
-                <p style={ {margin: '75px 20px 0px 20px'}}>{p.name}</p>
-                <Link to={'/item/'+ p.id + '/detail'}><button style={styleButton} >Detalles</button></Link>
-                </div>                
-                )}   
-    </div>
-    </>
-  }
+//     return <> 
+//     <div>
+//         {items.map(p =>  
+//                 <div class="producto" id={p.id} > <img src={location+p.image} alt={p.name} style={styleImage}/> 
+//                 <p style={ {margin: '75px 20px 0px 20px'}}>{p.name}</p>
+//                 <Link to={'/item/'+ p.id + '/detail'}><button style={styleButton} >Detalles</button></Link>
+//                 </div>                
+//                 )}   
+//     </div>
+//     </>
+//   }
 
   function ItemProducto(){
     const [ListaProductos, setListaProductos] = useState([]);

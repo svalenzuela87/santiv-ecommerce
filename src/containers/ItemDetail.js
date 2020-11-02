@@ -59,14 +59,14 @@ function ItemDetail () {
                             < Counter
                                     initial ={1}
                                     max= {item.stock}
-                                    min = {0}
+                                    min = {1}
+                                    id = {id}
                                 />
 
                   <Link to={'/'}><button id='styleVolver' type="button" class="btn btn-info">Volver</button></Link> 
                     
                     <br/>
 
-                  <Link to={'/Cart/'+ id}><button type="button" class="btn btn-info">Agregar al carrito</button></Link>
 
                   </div>
 

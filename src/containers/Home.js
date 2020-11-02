@@ -24,7 +24,7 @@ function Home({ children }) {
         </div>
 
         <br/>
-            <h2>Estos son nuestros productos</h2>
+            <divisor>Estos son nuestros productos</divisor>
         <br/>
         <br/>
 
@@ -34,7 +34,7 @@ function Home({ children }) {
 
 
         <br/>
-            <h2>Acerca de nosotros</h2>
+            <divisor>Acerca de nosotros</divisor>
         <br/>
         <br/>
 
@@ -43,7 +43,7 @@ function Home({ children }) {
         </div>
 
         <br/>
-            <h2>Contacto</h2>
+            <divisor>Contacto</divisor>
         <br/>
         <br/>
 

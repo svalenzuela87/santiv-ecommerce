@@ -4,7 +4,7 @@ import '../assets/style.css';
 import { Navbar,Nav,NavDropdown } from 'react-bootstrap'
 import Categorias from '../components/NavBar/Categorias';
 
-
+//https://react-bootstrap.github.io/components/navbar/
 
 function NavBar () {
 
@@ -13,7 +13,6 @@ function NavBar () {
                 <div className="row">
                     <div className="col-md-12">
                         <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
-                            {/* <a class="navbar-brand" href="#">Navbar</a> */}
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
@@ -38,25 +37,9 @@ function NavBar () {
                                             </a>
                                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                                 <Categorias/>
-                                                {/* <a class="dropdown-item" href="category/:id">Frutos</a>
-                                                <a class="dropdown-item" href="category/:id">Semillas</a>
-                                                <a class="dropdown-item" href="category/:id">Suplementos</a>
-                                            <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item"href="category/:id">Importados</a> */}
-                                            </div>
+                                            </div>  
                                         </li>
-                                    {/* <NavDropdown title="Categorias" id="basic-nav-dropdown">
-                                        <NavDropdown.Item href="category/:id">Frutos</NavDropdown.Item>
-                                        <NavDropdown.Item href="category/:id">Semillas</NavDropdown.Item>
-                                        <NavDropdown.Item href="category/:id">Suplementos</NavDropdown.Item>
-                                        <NavDropdown.Divider />
-                                        <NavDropdown.Item href="category/:id">Importados</NavDropdown.Item>
-                                    </NavDropdown> */}
                                 </ul>
-                                {/* <form class="form-inline my-2 my-lg-0">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                                </form> */}
                             </div>
 
                             <CartIcon/>
